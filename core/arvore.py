@@ -15,25 +15,25 @@ class Arvore :
             
     def build_from_tokens ( self, tokens ) :
         current_node = self.root
-        print(self.root)
         if len(tokens) > 1 :
             for token in tokens[1:] :
                 if isinstance(token, TokenAbertura) :
                     new_node = Node(token, [], current_node)
                     current_node.addChild(new_node)
                     current_node = new_node
+                    if not token.require_closing() and current_node.parent != None:
+                        current_node = current_node.parent
                 elif isinstance(token, TokenFechamento) :
                     if current_node.parent != None :
                         current_node = current_node.parent
                 elif isinstance(token, TokenDado) :
-                    if current_node.parent != None :
-                        current_node.addChild(token)
-                        current_node = current_node.parent
+                    current_node.addChild(token)
 
     def print_arvore (self) :
         self._print_arvore(self.root)
 
     def _print_arvore ( self, node ) :
+        # print(str(node) + ' ' + str(len(node.children)))
         if len(node.children) > 0 :
             for child in node.children :
                 self._print_arvore(child)
@@ -42,6 +42,6 @@ class Arvore :
                 print(str(child) + ' ', end='')
             print(' }')
         else :
-            print(node)           
+            print(str(node) + ' -> { }')
 
 

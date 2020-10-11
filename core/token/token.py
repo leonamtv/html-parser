@@ -1,3 +1,5 @@
+self_closing_tags = [ 'area', 'base', 'br', 'col', 'embed', 'hr', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr', 'command', 'keygen', 'menuitem']
+
 class Token:
     """
     Classe genérica de tokens.
@@ -15,3 +17,6 @@ class Token:
         Retorna o nome do token.
         """
         return self.nome
+    
+    def require_closing ( self ) :
+        return not self.nome in self_closing_tags

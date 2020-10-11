@@ -13,7 +13,8 @@ html_content = """
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <title>Leonamtv</title>
-  <base href="https://leonamtv.github.io/leonamtv/">  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="https://leonamtv.github.io/leonamtv/">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
@@ -21,8 +22,8 @@ html_content = """
   <link rel="stylesheet" href="styles.1a2dd1f7fc237001a3e3.css">
 </head>
 <body>
-  <img src='asad'/>
   <p>Batata</p>
+  <img src='asad'/>
   <script src="runtime-es2015.f8b979f66300b1e53384.js" type="module"></script>
   <script src="runtime-es5.f8b979f66300b1e53384.js" nomodule defer></script>
   <script src="polyfills-es5.854eca2125f3bf6856f8.js" nomodule defer></script>
@@ -36,12 +37,4 @@ html_content = """
 tokenizer = Tokenizer()
 tokenizer.feed(html_content)
 tokens = tokenizer.get_fila()
-# for token in tokens :
-#   print(token)
-#   string = ''
-#   if isinstance(token, TokenAbertura) :
-#     string += 'A '
-#   if isinstance(token, TokenFechamento) :
-#     string += 'F '
-#   print(string + token.nome)
 arvore = Arvore(tokens=list(tokens))

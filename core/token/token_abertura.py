@@ -1,8 +1,6 @@
 from core.token.token import Token
 from core.token.token_fechamento import TokenFechamento
 
-self_closing_tags = [ 'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr', 'command', 'keygen', 'menuitem']
-
 class TokenAbertura(Token):
     """
     Classe que modela um token de 
@@ -29,7 +27,8 @@ class TokenAbertura(Token):
         #         result += " | " + attr[0]
         #     if attr[1] != None :
         #         result += " = " + attr[1]
-        return '< ABRE TAG: ' + result + ' >'
+        # return '< ABRE TAG: ' + result + ' >'
+        return result
 
     def isComplemento ( self, token ) :
         if not isinstance ( token, TokenFechamento ) :
@@ -38,7 +37,4 @@ class TokenAbertura(Token):
             return False
         return True
 
-    def require_closing ( self ) :
-        if self.nome in self_closing_tags :
-            return False
-        return True
+   
