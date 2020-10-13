@@ -15,6 +15,9 @@ class Arvore :
             
     def build_from_tokens ( self, tokens ) :
         current_node = self.root
+
+        pilha = []
+
         if len(tokens) > 1 :
             for token in tokens[1:] :
                 if isinstance(token, TokenAbertura) :
@@ -23,7 +26,16 @@ class Arvore :
                     current_node = new_node
                     if not token.require_closing() and current_node.parent != None:
                         current_node = current_node.parent
+                    if token.require_closing():
+                        pilha.append(token)
                 elif isinstance(token, TokenFechamento) :
+                    if len(pilha) > 0 :
+                        if pilha[-1].isComplemento(token) :
+                            pilha.pop()
+                        # elif pilha[-1].require_closing() :
+                        #     pass
+                        else :
+                            raise Exception(str(pilha[-1]) + ': token aberto e não fechado')
                     if current_node.parent != None :
                         current_node = current_node.parent
                 elif isinstance(token, TokenDado) :
@@ -33,7 +45,6 @@ class Arvore :
         self._print_arvore(self.root)
 
     def _print_arvore ( self, node ) :
-        # print(str(node) + ' ' + str(len(node.children)))
         if len(node.children) > 0 :
             for child in node.children :
                 self._print_arvore(child)

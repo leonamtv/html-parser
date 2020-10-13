@@ -22,13 +22,12 @@ class TokenAbertura(Token):
         algum.
         """
         result = self.nome
-        # for attr in self.attrs:
-        #     if attr[0] != None :
-        #         result += " | " + attr[0]
-        #     if attr[1] != None :
-        #         result += " = " + attr[1]
-        # return '< ABRE TAG: ' + result + ' >'
-        return result
+        for attr in self.attrs:
+            if attr[0] != None :
+                result += " | " + attr[0]
+            if attr[1] != None :
+                result += " = " + attr[1]
+        return '< ABRE TAG: ' + result + ' >'
 
     def isComplemento ( self, token ) :
         if not isinstance ( token, TokenFechamento ) :
