@@ -19,7 +19,7 @@ class Arvore :
         pilha = []
 
         if len(tokens) > 1 :
-            for token in tokens[1:] :
+            for i, token in enumerate(tokens[1:]) :
                 if isinstance(token, TokenAbertura) :
                     new_node = Node(token, [], current_node)
                     current_node.addChild(new_node)
@@ -30,10 +30,12 @@ class Arvore :
                         pilha.append(token)
                 elif isinstance(token, TokenFechamento) :
                     if len(pilha) > 0 :
-                        if pilha[-1].isComplemento(token) :
+                        if not token.require_closing () :
                             pilha.pop()
-                        # elif pilha[-1].require_closing() :
-                        #     pass
+                        elif pilha[-1].isComplemento(token)  :
+                            pilha.pop()
+                        elif pilha[-1].isComplemento(token) and pilha[-1].require_closing() :
+                            raise Exception('Esperado ', str(pilha[-1]) + ', em vez de ', str(token))
                         else :
                             raise Exception(str(pilha[-1]) + ': token aberto e não fechado')
                     if current_node.parent != None :
