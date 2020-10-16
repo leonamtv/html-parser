@@ -1,8 +1,10 @@
 from html.parser import HTMLParser
 from collections import deque
-from core.token.token_abertura import TokenAbertura
+
+from core.token.token_dado       import TokenDado
+from core.token.token_declaracao import TokenDecl
+from core.token.token_abertura   import TokenAbertura
 from core.token.token_fechamento import TokenFechamento
-from core.token.token_dado import TokenDado
 from core.token.token_comentario import TokenComentario
 
 class Tokenizer (HTMLParser):
@@ -21,7 +23,7 @@ class Tokenizer (HTMLParser):
         Caso ignore_comments seja = False, adicio-
         na os comentários na fila.
         """
-        HTMLParser.__init__(self)
+        HTMLParser.__init__(self, convert_charrefs=False)
         self.fila = deque()
         self.ignore_comments = ignore_comments
     
@@ -75,11 +77,27 @@ class Tokenizer (HTMLParser):
 
             self.fila.append(tag_token)
 
+    def handle_decl ( self, decl ) :
+        """
+        Gerencia a captura de tags de declaração;
+
+        Exemplo: <!DOCTYPE ... >
+        """
+        self.fila.append(TokenDecl(decl))
+
+    def handle_startendtag ( self, tag, attrs ) :
+        """
+        Gerencia startend tag:
+
+        Exemplo: <.../>
+        """
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
     def get_fila (self):
         """
         Retorna a fila de tokens
         """
-
         return self.fila
 
     def __getitem__(self, index):
