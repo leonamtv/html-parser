@@ -235,6 +235,25 @@ class testAll ( unittest.TestCase ) :
 [ documento ] -> { [ < ABRE TAG: html > ]  }"""
         
         self.assertEqual( output, expected_output )
+    
+    def teste_j ( self ) :
+        file = open('./samples/teste10.html', 'r')
+        html_content = file.read()
+        file.close()
+
+        tokenizer = Tokenizer()
+        tokenizer.feed(html_content)
+        tokens = tokenizer.get_fila()
+
+        temp_stdout = StringIO()
+        with contextlib.redirect_stdout(temp_stdout):
+            _ = Arvore(tokens=list(tokens))
+
+        output = temp_stdout.getvalue().strip()
+        
+        expected_output = """Erro: O token < ABRE TAG: body > não pode ser aberto mais de uma vez."""
+        
+        self.assertEqual( output, expected_output )
 
 
 
