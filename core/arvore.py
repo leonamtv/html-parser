@@ -45,7 +45,7 @@ class Arvore :
                 if tags_map[token.nome] > 0 :
                     tags_map[token.nome] -= 1    
             else :
-                raise Exception('Tag ', str(token), ' fechada e não aberta')
+                raise Exception('Tag ' + str(token) + ' fechada e não aberta')
 
         def update_opening ( token ) :
             if token.nome in limited_tags_count :

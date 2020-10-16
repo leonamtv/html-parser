@@ -137,7 +137,7 @@ class testAll ( unittest.TestCase ) :
 
         output = temp_stdout.getvalue().strip()
         
-        expected_output = """Erro: ('Tag ', '< FECHA TAG: p >', ' fechada e não aberta')"""
+        expected_output = """Erro: Tag < FECHA TAG: p > fechada e não aberta"""
         
         self.assertEqual( output, expected_output )
   
