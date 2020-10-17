@@ -295,6 +295,44 @@ class testAll ( unittest.TestCase ) :
         expected_output = """Lista de tokens vazia."""
         
         self.assertEqual( output, expected_output )
+    
+    def teste_k ( self ) :
+        nome = './samples/teste11.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
+        html_content = file.read()
+        file.close()
+
+        tokenizer = Tokenizer()
+        tokenizer.feed(html_content)
+        tokens = tokenizer.get_fila()
+
+        temp_stdout = StringIO()
+        with contextlib.redirect_stdout(temp_stdout):
+            _ = Arvore(tokens=list(tokens), verbose=True)
+
+        output = temp_stdout.getvalue().strip()
+        
+        expected_output = """[ < DECL TAG: DOCTYPE html > ] -> { }
+[ < ABRE TAG: meta | charset = UTF-8 > ] -> { }
+[ < ABRE TAG: meta | name = viewport | content = width=device-width, initial-scale=1.0 > ] -> { }
+[ < DADO: Document > ] -> { }
+[ < ABRE TAG: title > ] -> { [ < DADO: Document > ]  }
+[ < ABRE TAG: head > ] -> { [ < ABRE TAG: meta | charset = UTF-8 > ] [ < ABRE TAG: meta | name = viewport | content = width=device-width, initial-scale=1.0 > ] [ < ABRE TAG: title > ]  }
+[ < DADO: Teste > ] -> { }
+[ < ABRE TAG: h1 > ] -> { [ < DADO: Teste > ]  }
+[ < DADO: Teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste
+    teste teste teste teste teste teste teste teste teste teste > ] -> { }
+[ < ABRE TAG: br > ] -> { }
+[ < DADO: Teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste
+    teste teste teste teste teste teste teste teste teste teste > ] -> { }
+[ < ABRE TAG: body > ] -> { [ < ABRE TAG: h1 > ] [ < DADO: Teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste
+    teste teste teste teste teste teste teste teste teste teste > ] [ < ABRE TAG: br > ] [ < DADO: Teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste
+    teste teste teste teste teste teste teste teste teste teste > ]  }
+[ < ABRE TAG: html | lang = en > ] -> { [ < ABRE TAG: head > ] [ < ABRE TAG: body > ]  }
+[ documento ] -> { [ < DECL TAG: DOCTYPE html > ] [ < ABRE TAG: html | lang = en > ]  }"""
+        
+        self.assertEqual( output, expected_output )
 
 
 
