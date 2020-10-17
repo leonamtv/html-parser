@@ -29,3 +29,6 @@ Caso queira visualizar uma representação simples da árvore gerada (caso não 
 ou
 ./hp.sh <arquivo> --verbose
 ```
+
+----
+Autor: [Leonam T. V.](https://leonamtv.github.io/leonamtv/)
