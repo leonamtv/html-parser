@@ -15,7 +15,9 @@ class testAll ( unittest.TestCase ) :
     """
 
     def teste_a ( self ) :
-        file = open('./samples/teste1.html', 'r')
+        nome = './samples/teste1.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -34,7 +36,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_b ( self ) :
-        file = open('./samples/teste2.html', 'r')
+        nome = './samples/teste2.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -53,7 +57,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_c ( self ) :
-        file = open('./samples/teste3.html', 'r')
+        nome = './samples/teste3.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -80,7 +86,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_d ( self ) :
-        file = open('./samples/teste4.html', 'r')
+        nome = './samples/teste4.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -107,7 +115,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_e ( self ) :
-        file = open('./samples/teste5.html', 'r')
+        nome = './samples/teste5.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -126,7 +136,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_f ( self ) :
-        file = open('./samples/teste6.html', 'r')
+        nome = './samples/teste6.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -145,7 +157,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_g ( self ) :
-        file = open('./samples/teste7.html', 'r')
+        nome = './samples/teste7.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -189,7 +203,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_h ( self ) :
-        file = open('./samples/teste8.html', 'r')
+        nome = './samples/teste8.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -208,7 +224,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
   
     def teste_i ( self ) :
-        file = open('./samples/teste9.html', 'r')
+        nome = './samples/teste9.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -242,7 +260,9 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
     
     def teste_j ( self ) :
-        file = open('./samples/teste10.html', 'r')
+        nome = './samples/teste10.html'
+        print('Testando o arquivo ' + nome)
+        file = open(nome, 'r')
         html_content = file.read()
         file.close()
 
@@ -261,6 +281,7 @@ class testAll ( unittest.TestCase ) :
         self.assertEqual( output, expected_output )
     
     def teste_k ( self ) :
+        print('Testando um arquivo vazio')
         tokenizer = Tokenizer()
         tokenizer.feed('')
         tokens = tokenizer.get_fila()
