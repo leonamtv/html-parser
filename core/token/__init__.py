@@ -1,3 +1,4 @@
+# Lista de tags do html que se fecham automaticamente
 self_closing_tags = [ 
     'area', 
     'base', 
@@ -17,6 +18,7 @@ self_closing_tags = [
     'menuitem'
 ]
 
+# Lista de todas as tags do html
 html_tags = [
     "a",
     "abbr",
@@ -140,6 +142,7 @@ html_tags = [
     "wbr"
 ]
 
+# Mapa de hierarquia
 must_be_inside = { 
     'td'   : [ 'tr' ],
     'tr'   : [ 'table' ],
@@ -148,10 +151,12 @@ must_be_inside = {
     'li'   : [ 'ul', 'ol' ],
 }
 
+# Lista de tags limitadas
 limited_tokens = [
     'html', 'head', 'body'
 ]
 
+# Atualizando o mapa de hierarquia
 for tag in html_tags :
     if tag not in must_be_inside :
         must_be_inside[tag] = [ 'html' ]
