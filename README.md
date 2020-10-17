@@ -21,3 +21,11 @@ Execute com seu arquivo de preferência:
 ```bash
 ./hp.sh <arquivo>
 ```
+
+Caso queira visualizar uma representação simples da árvore gerada (caso não haja nenhum erro no html), passe o argumento `-v` ou `--verbose`, assim:
+
+```bash
+./hp.sh <arquivo> -v
+ou
+./hp.sh <arquivo> --verbose
+```
